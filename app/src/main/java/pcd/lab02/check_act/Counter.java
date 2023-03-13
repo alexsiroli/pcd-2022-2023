@@ -3,7 +3,8 @@ package pcd.lab02.check_act;
 public class Counter {
 
 	private int cont;
-	private int min, max;
+	private final int min;
+	private final int max;
 	
 	public Counter(int min, int max){
 		this.cont = this.min = min;
@@ -11,20 +12,20 @@ public class Counter {
 	}
 	
 	public synchronized void inc() throws OverflowException {
-		if (cont + 1 > max){
+		if (this.cont + 1 > this.max){
 			throw new OverflowException();
 		}
-		cont++;
+		this.cont++;
 	}
 
 	public synchronized void dec() throws UnderflowException {
-		if (cont - 1 < min){
+		if (this.cont - 1 < this.min){
 			throw new UnderflowException();
 		}
-		cont--;
+		this.cont--;
 	}
 	
 	public synchronized int getValue(){
-		return cont;
+		return this.cont;
 	}
 }

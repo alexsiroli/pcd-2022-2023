@@ -9,7 +9,7 @@ package pcd.lab02.check_act;
 public class TestCounter {
 
 	public static void main(String[] args) throws Exception {
-		int ntimes = 10000;
+		int ntimes = 10_000;
 		Counter c = new Counter(0,1);
 		WorkerA w1a = new WorkerA(c,ntimes);
 		WorkerA w1b = new WorkerA(c,ntimes);
