@@ -4,7 +4,7 @@ public class TestCounter {
 
 	public static void main(String[] args) throws Exception {
 		// int ntimes = Integer.parseInt(args[0]);
-		int ntimes = 10000;
+		int ntimes = 500_0000;
 		Object lock = new Object();
 		UnsafeCounter c = new UnsafeCounter(0);
 		Worker w1 = new Worker(c,ntimes, lock);
