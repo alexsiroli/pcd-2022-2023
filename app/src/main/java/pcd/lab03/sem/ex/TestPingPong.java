@@ -9,10 +9,11 @@ import java.util.concurrent.Semaphore;
  *
  */
 public class TestPingPong {
-	private static final Semaphore mutex = new Semaphore(1, true);
+	private static final Semaphore pingMutex = new Semaphore(0);
+	private static final Semaphore pongMutex = new Semaphore(1);
 	public static void main(String[] args) {
-		new Pinger(mutex).start();
-		new Ponger(mutex).start();
+		new Pinger(pingMutex, pongMutex).start();
+		new Ponger(pingMutex, pongMutex).start();
 	}
 
 }

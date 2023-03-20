@@ -4,19 +4,21 @@ import java.util.concurrent.Semaphore;
 
 public class Ponger extends Thread {
 
-	Semaphore mutex;
+	Semaphore pingMutex;
+	Semaphore pongMutex;
 
-	public Ponger(Semaphore mutex) {
-		this.mutex = mutex;
+	public Ponger(Semaphore ping, Semaphore pong) {
+		this.pingMutex = ping;
+		this.pongMutex = pong;
 	}
 
 	public void run() {
 		while (true) {
 			try {
-				this.mutex.acquire();
+				this.pongMutex.acquire();
 				System.out.println("pong!");
 				sleep(500);
-				this.mutex.release();
+				this.pingMutex.release();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
