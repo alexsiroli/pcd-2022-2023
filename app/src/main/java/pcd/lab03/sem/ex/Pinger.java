@@ -15,11 +15,10 @@ public class Pinger extends Thread {
 			try {
 				this.mutex.acquire();
 				System.out.println("ping!");
-				sleep(500);
+				Thread.sleep(500);
+				this.mutex.release();
 			} catch (Exception ex) {
 				ex.printStackTrace();
-			} finally {
-				this.mutex.release();
 			}
 		}
 	}

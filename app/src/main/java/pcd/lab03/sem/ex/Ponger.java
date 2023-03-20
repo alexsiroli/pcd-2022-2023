@@ -16,10 +16,9 @@ public class Ponger extends Thread {
 				this.mutex.acquire();
 				System.out.println("pong!");
 				sleep(500);
+				this.mutex.release();
 			} catch (Exception ex) {
 				ex.printStackTrace();
-			} finally {
-				this.mutex.release();
 			}
 		}
 	}
